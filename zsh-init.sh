@@ -1,6 +1,6 @@
 #! /bin/zsh
 
-# run with source
+# run with eval
 
 # install oh-my-zsh
 CHSH=no RUNZSH=no sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -17,4 +17,12 @@ if ! grep -q "zsh-autosuggestions" ~/.zshrc; then
 fi
 
 chsh -s $(which zsh)
-source ~/.zshrc
+
+case "$0" in
+*zsh)
+    source ~/.zshrc
+    ;;
+*)
+    zsh
+    ;;
+esac
