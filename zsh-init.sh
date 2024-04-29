@@ -19,6 +19,7 @@ fi
 # TODO: change the condition check to a more robust approach
 if ! grep -q "zsh-autosuggestions" ~/.zshrc; then
     git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+    # TODO: fix the following script on MacOS
     sed -i '/plugins=(/ { :a; /)/! { N; ba; }; s/)/ zsh-autosuggestions&/ }' ~/.zshrc
 fi
 
