@@ -6,7 +6,13 @@
 CHSH=no RUNZSH=no sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # change theme to "minimal"
-sed -i 's/^ZSH_THEME=.*$/ZSH_THEME="minimal"/' ~/.zshrc
+sed 's/^ZSH_THEME=.*$/ZSH_THEME="minimal"/' ~/.zshrc >~/.zshrc.new
+if [ $? -eq 0 ]; then
+    mv -f ~/.zshrc ~/.zshrc.bak
+    mv -f ~/.zshrc.new ~/.zshrc
+else
+    echo "Pattern substitution failed"
+fi
 
 # install zsh-autosuggestions
 # https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md
